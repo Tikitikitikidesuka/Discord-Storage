@@ -14,8 +14,6 @@ public class FileStitcher {
 			for(byte[] b : bytes) {
 				outputStream.write(b);
 			}
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
