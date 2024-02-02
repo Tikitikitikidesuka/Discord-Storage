@@ -30,9 +30,10 @@ public class Sender {
 			ReadonlyAttachment attachment = client.get(l).get().getAttachments().get(0);
 			urls.add(attachment.getUrl());
 		}
-
-		client.close();
-
 		return new DiscordFileMessage(filename, urls);
+	}
+
+	public void close() {
+		client.close();
 	}
 }

@@ -6,9 +6,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class User implements Serializable {
-    public String userID;
 
-    public ArrayList<DiscordFileMessage> files;
+	private String userID;
+
+    private ArrayList<DiscordFileMessage> files;
 
     public User(String userID) {
         this.userID = userID;
@@ -20,4 +21,12 @@ public class User implements Serializable {
     public void addDiscordFileMessage(DiscordFileMessage message) {
         files.add(message);
     }
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public ArrayList<DiscordFileMessage> getFiles() {
+		return files;
+	}
 }

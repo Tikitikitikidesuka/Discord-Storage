@@ -11,7 +11,7 @@ public class JsonWriter {
     public static void writeJson(User user) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File(user.userID + ".json"), user);
+            objectMapper.writeValue(new File(user.getUserID() + ".json"), user);
             System.out.println("JSON file created successfully.");
         } catch (IOException e) {
             e.printStackTrace();
