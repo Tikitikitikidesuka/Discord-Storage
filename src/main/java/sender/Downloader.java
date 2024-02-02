@@ -1,6 +1,6 @@
 package sender;
 
-import utils.DSConfig;
+import config.Config;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -15,7 +15,7 @@ public class Downloader {
 		for(String urlString : urls) {
 			URLConnection urlConnection = new URL(urlString).openConnection();
 			try (InputStream in = urlConnection.getInputStream()) {
-				byte[] buffer = in.readNBytes(DSConfig.FILE_SIZE);
+				byte[] buffer = in.readNBytes(Config.FILE_SIZE);
 				bytes.add(buffer);
 			}
 		}
