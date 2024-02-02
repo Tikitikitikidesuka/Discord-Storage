@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileSlicer {
-    public static List<byte[]> sliceFile(String inputFilePath) {
+    public static List<byte[]> sliceFile(String inputFilePath) throws IOException {
         List<byte[]> fileSlices = new ArrayList<>();
         File inputFile = new File(inputFilePath);
         int partSize = DSConfig.FILE_SIZE;
 
+        ByteArrayOutputStream outputStream;
         try (FileInputStream inputStream = new FileInputStream(inputFile)) {
             byte[] buffer = new byte[partSize];
-            int bytesRead = 0;
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            outputStream = new ByteArrayOutputStream();
+
+            int bytesRead;
             while ((bytesRead = inputStream.read(buffer)) > 0) {
                 if (outputStream.size() + bytesRead > partSize) {
                     fileSlices.add(outputStream.toByteArray());
@@ -29,12 +31,10 @@ public class FileSlicer {
                     outputStream.reset();
                 }
             }
+        }
 
-            if (outputStream.size() > 0) {
-                fileSlices.add(outputStream.toByteArray());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (outputStream.size() > 0) {
+            fileSlices.add(outputStream.toByteArray());
         }
 
         return fileSlices;
