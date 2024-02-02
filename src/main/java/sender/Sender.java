@@ -51,9 +51,9 @@ public class Sender {
 
 		// Fetch URLs based on message IDs
 		ArrayList<String> urls = new ArrayList<>();
-		for (Long l : msgIDs) {
+		for (int i = 0; i < msgIDs.size(); ++i) {
 			// Assume each client can retrieve any message
-			ReadonlyAttachment attachment = clients.get(0).get(l).get().getAttachments().get(0);
+			ReadonlyAttachment attachment = clients.get(i % clients.size()).get(msgIDs.get(i)).get().getAttachments().get(0);
 			urls.add(attachment.getUrl());
 		}
 
