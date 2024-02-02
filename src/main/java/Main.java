@@ -2,19 +2,17 @@ import config.Config;
 import fileops.FileSlicer;
 import fileops.FileStitcher;
 import fileops.JsonReader;
+import fileops.JsonWriter;
 import sender.Downloader;
 import sender.Sender;
 import utils.DiscordFileMessage;
-import fileops.JsonWriter;
 import utils.User;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
