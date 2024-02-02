@@ -16,10 +16,14 @@ public class Main {
         User luis = new User("luis");
         luis.addDiscordFileMessage(dfm);
         JsonWriter.writeJson(luis);
-        luis.addDiscordFileMessage(dfm);
-        JsonWriter.writeJson(luis);
 
         User luisCopia = JsonReader.readJson("luis.json");
-        JsonWriter.writeJson(luisCopia);
+		System.out.println(luisCopia.userID);
+		for(DiscordFileMessage msg : luisCopia.files) {
+			System.out.println(msg.getFilename() + ": ");
+			for(String url : msg.getUrls()) {
+				System.out.println("    " + url);
+			}
+		}
     }
 }

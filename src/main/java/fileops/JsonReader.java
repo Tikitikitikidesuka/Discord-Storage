@@ -10,7 +10,8 @@ public class JsonReader {
     public static User readJson(String path) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(path), User.class);
+            User temp = objectMapper.readValue(new File(path), User.class);
+			return temp;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
