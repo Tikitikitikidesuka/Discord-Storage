@@ -1,18 +1,21 @@
 import config.Config;
 import fileops.FileSlicer;
+import fileops.FileStitcher;
 import fileops.JsonReader;
+import sender.Downloader;
 import sender.Sender;
 import utils.DiscordFileMessage;
 import fileops.JsonWriter;
 import utils.User;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
 		Sender sender = new Sender("https://discord.com/api/webhooks/1203027726647427133/dxTtB9Z9K5vDn-zKhNmlzg66YAUZ44oDbVhaazC7DZpP6iI1iRfqawf14_R0xVmlokGM");
-		DiscordFileMessage dfm = sender.send(FileSlicer.sliceFile(Config.PATH + "beetle-tank.png"), "beetle-tank.png");
+		DiscordFileMessage dfm = sender.send(FileSlicer.sliceFile(Config.PATH + "lol.mp4"), "lol.mp4");
 
         User luis = new User("luis");
         luis.addDiscordFileMessage(dfm);
