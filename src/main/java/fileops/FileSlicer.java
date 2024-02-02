@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileSlicer {
-    public List<byte[]> sliceFile(String inputFilePath) {
+    public static List<byte[]> sliceFile(String inputFilePath) {
         List<byte[]> fileSlices = new ArrayList<>();
         File inputFile = new File(inputFilePath);
-        int partSize = 1024; // 1 kB
+        int partSize = DSConfig.FILE_SIZE;
 
         try (FileInputStream inputStream = new FileInputStream(inputFile)) {
             byte[] buffer = new byte[partSize];
