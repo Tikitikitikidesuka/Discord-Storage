@@ -1,4 +1,4 @@
-package fileops;
+package utils;
 
 public class DSConfig {
 

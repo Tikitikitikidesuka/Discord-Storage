@@ -11,4 +11,12 @@ public class DiscordFileMessage {
 		this.filename = filename;
 		this.urls = urls;
 	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public ArrayList<String> getUrls() {
+		return urls;
+	}
 }

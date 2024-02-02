@@ -1,6 +1,6 @@
 package sender;
 
-import fileops.DSConfig;
+import utils.DSConfig;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -14,20 +14,12 @@ public class Downloader {
 
 		for(String urlString : urls) {
 			URLConnection urlConnection = new URL(urlString).openConnection();
-			try (InputStream in = urlConnection.getInputStream();) {
+			try (InputStream in = urlConnection.getInputStream()) {
 				byte[] buffer = in.readNBytes(DSConfig.FILE_SIZE);
 				bytes.add(buffer);
 			}
 		}
 
 		return bytes;
-	}
-
-	public static byte[] downloadFile(String url) throws IOException {
-		URLConnection urlConnection = new URL(url).openConnection();
-		try (InputStream in = urlConnection.getInputStream();) {
-			byte[] buffer = in.readNBytes(DSConfig.FILE_SIZE);
-			return buffer;
-		}
 	}
 }

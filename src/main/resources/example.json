@@ -1,17 +1,18 @@
 {
+  "user": "userID",
   "files": [
     {
       "filename": "archivo1.png",
       "urls": [
-        {"url": "sjadsjadhjas1.cokm"},
-        {"url": "sjadsjadhjas2.cokm"}
+        "sjadsjadhjas1.cokm",
+        "sjadsjadhjas2.cokm"
       ]
     },
     {
       "filename": "archivo2.png",
       "urls": [
-        {"url": "sjadsjadhjad1.cokm"},
-        {"url": "sjadsjadhjad2.cokm"}
+        "sjadsjadhjad1.cokm",
+        "sjadsjadhjad2.cokm"
       ]
     }
   ]
