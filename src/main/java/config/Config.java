@@ -3,6 +3,7 @@ package config;
 public class Config {
     private SenderConfig sender;
     private DownloaderConfig downloader;
+	private UserManagerConfig userManager;
 
     public SenderConfig getSender() {
         return this.sender;
@@ -19,4 +20,12 @@ public class Config {
     public void setDownloader(DownloaderConfig downloaderConfig) {
         this.downloader = downloaderConfig;
     }
+
+	public UserManagerConfig getUserManager() {
+		return userManager;
+	}
+
+	public void setUserManager(UserManagerConfig userManager) {
+		this.userManager = userManager;
+	}
 }
