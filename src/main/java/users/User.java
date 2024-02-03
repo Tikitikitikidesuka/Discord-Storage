@@ -1,4 +1,6 @@
-package utils;
+package users;
+
+import messages.DiscordFileMessage;
 
 import java.io.Serializable;
 import java.util.ArrayList;

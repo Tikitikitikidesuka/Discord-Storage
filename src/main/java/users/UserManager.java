@@ -1,13 +1,13 @@
+package users;
+
 import exceptions.UserNotFoundException;
 import fileops.FileSlicer;
 import fileops.FileStitcher;
 import fileops.JsonReader;
 import fileops.JsonWriter;
-import kotlin.Pair;
-import sender.Downloader;
-import sender.Sender;
-import utils.DiscordFileMessage;
-import utils.User;
+import messages.Downloader;
+import messages.Sender;
+import messages.DiscordFileMessage;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,16 +45,5 @@ public class UserManager {
 		ArrayList<byte[]> bytes = downloader.downloadFile(discordFileMessage.getUrls());
 		File file = FileStitcher.stitchFile(bytes, discordFileMessage.getFilename());
 		return JsonReader.readJson(file.getPath());
-	}
-
-	public static void main(String[] args) throws UserNotFoundException, IOException, ExecutionException, InterruptedException {
-		UserManager um = new UserManager("https://discord.com/api/webhooks/1203330038003662898/5XP7QRHtLx2nUa3-K1DDVIc9OfJ5sCsbgAsFRYpRhaRP0VLzYr6otfCWSG0st31Dk2u6");
-		User eusebio = new User("Eusebio");
-
-		um.writeUser(eusebio);
-		User u2 = um.getUser(eusebio.getUserID());
-
-		System.out.println(eusebio);
-		System.out.println(u2);
 	}
 }

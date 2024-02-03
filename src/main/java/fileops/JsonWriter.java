@@ -1,7 +1,7 @@
 package fileops;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import utils.User;
+import users.User;
 
 import java.io.File;
 import java.io.IOException;

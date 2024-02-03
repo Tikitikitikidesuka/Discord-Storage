@@ -1,8 +1,7 @@
-package sender;
+package messages;
 
 import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.receive.ReadonlyAttachment;
-import utils.DiscordFileMessage;
 
 import java.util.ArrayList;
 import java.util.Collection;

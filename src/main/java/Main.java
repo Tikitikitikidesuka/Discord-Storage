@@ -5,14 +5,13 @@ import fileops.FileSlicer;
 import fileops.FileStitcher;
 import fileops.JsonReader;
 import fileops.JsonWriter;
-import sender.Downloader;
-import sender.Sender;
-import utils.DiscordFileMessage;
-import utils.User;
+import messages.Downloader;
+import messages.Sender;
+import messages.DiscordFileMessage;
+import users.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Predicate;
