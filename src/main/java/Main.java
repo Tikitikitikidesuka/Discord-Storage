@@ -18,7 +18,6 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
 		Scanner scanner = new Scanner(System.in);
-		/*
 		Sender sender = new Sender(
 				new ArrayList<>(Arrays.asList(
 						"https://discord.com/api/webhooks/1203027726647427133/dxTtB9Z9K5vDn-zKhNmlzg66YAUZ44oDbVhaazC7DZpP6iI1iRfqawf14_R0xVmlokGM",
@@ -40,7 +39,6 @@ public class Main {
         //luis.addDiscordFileMessage(dfm1);
 		luis.addDiscordFileMessage(dfm2);
 		JsonWriter.writeJson(luis);
-		*/
 
         User luisCopia = JsonReader.readJson("luis.json");
 
@@ -59,6 +57,6 @@ public class Main {
 		Downloader downloader = new Downloader();
 		FileStitcher.stitchFile(downloader.downloadFile(result.getUrls()), result.getFilename());
 
-		//sender.close();
+		sender.close();
     }
 }
