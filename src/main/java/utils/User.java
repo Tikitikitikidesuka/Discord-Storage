@@ -14,6 +14,7 @@ public class User implements Serializable {
         this.files = new ArrayList<>();
     }
 
+	//Needed for the JsonReader
 	public User() {}
 
     public void addDiscordFileMessage(DiscordFileMessage message) {
@@ -26,5 +27,14 @@ public class User implements Serializable {
 
 	public ArrayList<DiscordFileMessage> getFiles() {
 		return files;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("\"userID\": " + userID + ",\"files\": [");
+		for(DiscordFileMessage dfm : files)
+			sb.append("{\n" + dfm.toString() + "},");
+		sb.append("]");
+		return sb.toString();
 	}
 }

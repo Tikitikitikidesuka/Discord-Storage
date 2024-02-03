@@ -14,6 +14,7 @@ public class DiscordFileMessage implements Serializable {
 		this.urls = urls;
 	}
 
+	//Needed for the JsonReader
 	public DiscordFileMessage() {}
 
 	public String getFilename() {
@@ -22,5 +23,14 @@ public class DiscordFileMessage implements Serializable {
 
 	public ArrayList<String> getUrls() {
 		return urls;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("\"filename\": " + filename + ",\"urls\": [");
+		for(String url : urls)
+			sb.append("\"" + url + "\",");
+		sb.append("]");
+		return sb.toString();
 	}
 }

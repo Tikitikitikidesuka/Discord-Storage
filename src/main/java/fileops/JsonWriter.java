@@ -8,13 +8,16 @@ import java.io.IOException;
 
 public class JsonWriter {
 
-    public static void writeJson(User user) {
+    public static File writeJson(User user) {
         ObjectMapper objectMapper = new ObjectMapper();
+		File file = new File(user.getUserID() + ".json");
         try {
-            objectMapper.writeValue(new File(user.getUserID() + ".json"), user);
+            objectMapper.writeValue(file, user);
             System.out.println("JSON file created successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+		return file;
     }
 }

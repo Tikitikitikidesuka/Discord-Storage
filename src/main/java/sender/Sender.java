@@ -20,6 +20,11 @@ public class Sender {
 		}
 	}
 
+	public Sender(String webhookUrl) {
+		this.clients = new ArrayList<>();
+		this.clients.add(WebhookClient.withUrl(webhookUrl));
+	}
+
 	public DiscordFileMessage send(List<byte[]> bytes, String filename) throws InterruptedException, ExecutionException {
 		ExecutorService executor = Executors.newFixedThreadPool(clients.size());
 		List<CompletableFuture<Long>> futures = new ArrayList<>();
@@ -33,7 +38,7 @@ public class Sender {
 			CompletableFuture<Long> future = CompletableFuture.supplyAsync(() -> {
 				try {
 					// Send using the selected client and filename as the index
-					return client.send(b, String.valueOf(index)).get().getId();
+					return client.send(b, filename + String.valueOf(index)).get().getId();
 				} catch (InterruptedException | ExecutionException e) {
 					throw new RuntimeException(e);
 				}
