@@ -1,6 +1,6 @@
 package fileops;
 
-import config.Config;
+import config.Constants;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,7 +13,7 @@ public class FileSlicer {
     public static List<byte[]> sliceFile(String inputFilePath) throws IOException {
         List<byte[]> fileSlices = new ArrayList<>();
         File inputFile = new File(inputFilePath);
-        int partSize = Config.FILE_SIZE;
+        int partSize = Constants.DC_FILE_SIZE;
 
         ByteArrayOutputStream outputStream;
         try (FileInputStream inputStream = new FileInputStream(inputFile)) {

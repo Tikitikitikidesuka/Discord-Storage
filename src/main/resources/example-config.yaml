@@ -1,0 +1,7 @@
+sender:
+  urls:
+    - "https://discord.com/api/webhooks/12345/yourWebhook1"
+    - "https://discord.com/api/webhooks/67890/yourWebhook2"
+    - "https://discord.com/api/webhooks/54321/yourWebhook3"
+downloader:
+  threads: 16
