@@ -5,6 +5,7 @@ import club.minnced.discord.webhook.receive.ReadonlyAttachment;
 import utils.DiscordFileMessage;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
@@ -13,7 +14,7 @@ public class Sender {
 
 	private ArrayList<WebhookClient> clients;
 
-	public Sender(ArrayList<String> webhookUrls) {
+	public Sender(Collection<String> webhookUrls) {
 		this.clients = new ArrayList<>();
 		for (String webhookUrl : webhookUrls) {
 			this.clients.add(WebhookClient.withUrl(webhookUrl));
