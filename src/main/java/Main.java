@@ -18,6 +18,7 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
 		Scanner scanner = new Scanner(System.in);
+		/*
 		Sender sender = new Sender(
 				new ArrayList<>(Arrays.asList(
 						"https://discord.com/api/webhooks/1203027726647427133/dxTtB9Z9K5vDn-zKhNmlzg66YAUZ44oDbVhaazC7DZpP6iI1iRfqawf14_R0xVmlokGM",
@@ -34,11 +35,12 @@ public class Main {
 		User luis = new User("luis");
 
 		//DiscordFileMessage dfm1 = sender.send(FileSlicer.sliceFile(Config.PATH + "beetle-tank.png"), "beetle-tank.png");
-		DiscordFileMessage dfm2 = sender.send(FileSlicer.sliceFile(Config.PATH + "aldeaoindemoniado.png"), "aldeaoindemoniado.png");
+		DiscordFileMessage dfm2 = sender.send(FileSlicer.sliceFile(Config.PATH + "movie.mp4"), "movie.mp4");
 
         //luis.addDiscordFileMessage(dfm1);
 		luis.addDiscordFileMessage(dfm2);
 		JsonWriter.writeJson(luis);
+		*/
 
         User luisCopia = JsonReader.readJson("luis.json");
 
@@ -54,8 +56,9 @@ public class Main {
 		Predicate<DiscordFileMessage> search = (DiscordFileMessage d) -> (d.getFilename().contains(query));
 		DiscordFileMessage result = dfms.stream().filter(search).toList().get(0); //Fix!!!
 
-		FileStitcher.stitchFile(Downloader.downloadFile(result.getUrls()), result.getFilename());
+		Downloader downloader = new Downloader();
+		FileStitcher.stitchFile(downloader.downloadFile(result.getUrls()), result.getFilename());
 
-		sender.close();
+		//sender.close();
     }
 }
