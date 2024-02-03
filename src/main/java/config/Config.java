@@ -1,7 +1,22 @@
 package config;
 
 public class Config {
-	public static final int FILE_SIZE = 26203914;
+    private SenderConfig sender;
+    private DownloaderConfig downloader;
 
-	public static final String PATH = "./src/main/resources/";
+    public SenderConfig getSender() {
+        return this.sender;
+    }
+
+    public void setSender(SenderConfig senderConfig) {
+        this.sender = senderConfig;
+    }
+
+    public DownloaderConfig getDownloader() {
+        return this.downloader;
+    }
+
+    public void setDownloader(DownloaderConfig downloaderConfig) {
+        this.downloader = downloaderConfig;
+    }
 }
