@@ -46,7 +46,7 @@ public class Main {
 		DiscordFileMessage result = dfms.stream().filter(search).toList().get(0); //Fix!!!
 
 		Downloader downloader = new Downloader();
-		FileStitcher.stitchFile(downloader.downloadFile(result.getUrls()), result.getFilename());
+		FileStitcher.stitchFile(downloader.downloadFile(result.getUrls(), config.getDownloader().getThreads()), result.getFilename());
 
 		sender.close();
     }
