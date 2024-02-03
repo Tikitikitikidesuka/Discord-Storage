@@ -20,16 +20,16 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		Sender sender = new Sender(
 				new ArrayList<>(Arrays.asList(
-						"https://discord.com/api/webhooks/1203027726647427133/dxTtB9Z9K5vDn-zKhNmlzg66YAUZ44oDbVhaazC7DZpP6iI1iRfqawf14_R0xVmlokGM",
-						"https://discord.com/api/webhooks/1203108027981635634/CNe2-J12GtGz41YLUIE3qgIlb9e6FY8QRl7DfbMCOTzO6bs7xpCRYRzsuyhUXSMuX_gp",
-						"https://discord.com/api/webhooks/1203108032394035200/FVQT18FcgexEWoYjA0_UMwo13r_OddVCGNQ2v7-wMNUwq-vrGUY9s6tKkBFtItjMwvqj",
-						"https://discord.com/api/webhooks/1203108035564802078/MHOqA5vYHyZfJoonftzFjVKc__8arjQkeHZSQIWeFXVLR-nByVmLkkqyBCkq7acZ14gg",
-						"https://discord.com/api/webhooks/1203108038920249415/w0uuF_4GfQIm9oL84XeS6tk72h72WP5jjuknOI5rKMcRmAlBaG4py3JY9A1mVyEvCFOE",
-						"https://discord.com/api/webhooks/1203108042296524820/-z8I_cr6emRw7z3_kHtBtvTgE1PMZeIJv1uWjNRvmodpSv-mz8w2qVnuI99pXLrUEK5J",
-						"https://discord.com/api/webhooks/1203108046251888681/i1z_XSZg1q40qJW80OT5yBdiStlFNGRvv43TNR0aD8R_IPP3-PrcPiA0EqZg8toIrL31",
-						"https://discord.com/api/webhooks/1203108049649139712/I-fw0C5B-rpcLGaJa-JN8HRRp0OvMatznTqnkjPgGtevAZL8e27OPamCKC3t51NCU7s2",
-						"https://discord.com/api/webhooks/1203108077549785109/8LBv9wsqrbo3PC5_5yPFwC30jRK2U1Lq1CM7036YmH2i-R9mB1p16z_yuKW4zVM3ILqU",
-						"https://discord.com/api/webhooks/1203108079928090734/5gzMTX_J789y4gpeLJlz_o9ojpenVhu-8OeR2-w0cym-QwzGFTZ3YJtAMmhjU866nQ00"
+						"https://discord.com/api/webhooks/1203324098999091231/kmFIvDrf6K5KEKPV_SEHrIiZaUzJR4MQYKLds6hS3dKZsUAH2SSCADvVlOkqqLwbcmgX",
+						"https://discord.com/api/webhooks/1203324274803347456/Oe3-hVLOlF49d4kSvW6sFwL_KQ3ILky5bFnHMF7sQEbY-pYWPmSW9MT2ydzCtM8QzwEu",
+						"https://discord.com/api/webhooks/1203324378901774377/4k8tyO-3MBQ-usjQopyltNEpzZReh1T3bOSzgwJicNtk2fQID8g3_uUU-Q80KS2H5IAS",
+						"https://discord.com/api/webhooks/1203324382987165696/vpKdSVXXiuxv0UnjhrdEOzvG8Exro8y1E_wAEcaCqpQC9zX2VJMa9w3kbp226lZ5vABD",
+						"https://discord.com/api/webhooks/1203324393389035543/5m6okw9L_beJLpOIUW8O7DVHYFoBqvGFspBcSDLn6wgUDwPbnJk9Jqyrw5s641LxHZ_R",
+						"https://discord.com/api/webhooks/1203324397079896125/npRFpJI6FS2uZUQBVMciqhUg12AHceoEpvX864bD-zs58G6B5NEJfJCzfbFhK_Fobpwb",
+						"https://discord.com/api/webhooks/1203325273907531856/NNAsjU-Ya_X-n6srdAhDIw_cTQu_GulbUhDQiR0RHuov9E251lX8qAYhj154hUyu4u4I",
+						"https://discord.com/api/webhooks/1203325383085396078/a_zXGhP9RLrkLdtxZGfsfj2vXl909pVIMOFh0gB31tDDnxTaq6bz4zxIDaA7Xz7JeUib",
+						"https://discord.com/api/webhooks/1203325456091185172/fgvktgSCChglJWnk5EpB8_O8g-O7FDBphgEf0Ej5f9VZ_4r-zlD7k3NM6nJJ4YjxjVKD",
+						"https://discord.com/api/webhooks/1203325533803380827/igDGi3EZnIS829jy9_dkyQ68DKIeYqFZo8vFFuf8mmu4DBsmw8mUJJegUbmuLANGzP7E"
 				)));
 		User luis = new User("luis");
 
