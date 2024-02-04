@@ -1,3 +1,5 @@
+package main;
+
 import config.Config;
 import fileops.FileSlicer;
 import fileops.FileStitcher;

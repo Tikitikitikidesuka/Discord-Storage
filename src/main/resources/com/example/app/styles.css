@@ -1,0 +1,26 @@
+/* styles.css */
+
+.container {
+    -fx-background-color: #a2ecc5; /* Light Green */
+}
+
+.title-label {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* White */
+}
+
+.text-field, .password-field {
+    -fx-background-color: #27ae60; /* Darker Green */
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #3498db; /* Blue */
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9; /* Darker Blue */
+}
