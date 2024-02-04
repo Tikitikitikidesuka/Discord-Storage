@@ -1,10 +1,10 @@
 /* styles.css */
 
-.container {
+.root {
     -fx-background-color: #a2ecc5; /* Light Green */
 }
 
-.title-label {
+.label {
     -fx-font-size: 24;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff; /* White */
@@ -15,12 +15,12 @@
     -fx-text-fill: #ffffff;
 }
 
-.button {
+#loginButton {
     -fx-background-color: #3498db; /* Blue */
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
 
-.button:hover {
+#loginButton:hover {
     -fx-background-color: #2980b9; /* Darker Blue */
 }

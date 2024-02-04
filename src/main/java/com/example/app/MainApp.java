@@ -9,9 +9,14 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 
 public class MainApp extends Application {
+
+    private static final String CREDENTIALS_FILE = "./src/main/resources/credentials.txt";
 
     @Override
     public void start(Stage primaryStage) {
@@ -28,7 +33,8 @@ public class MainApp extends Application {
         passwordField.setPromptText("Password");
 
         Button loginButton = new Button("Login");
-        loginButton.setOnAction(e -> handleLogin(usernameField.getText(), passwordField.getText()));
+        loginButton.setId("loginButton");
+        loginButton.setOnAction(e -> authenticateAndOpenDragAndDrop(usernameField.getText(), passwordField.getText()));
 
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(20, 50, 50, 50));
@@ -47,9 +53,69 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    private void handleLogin(String username, String password) {
-        // Add your authentication logic here
-        System.out.println("Username: " + username + ", Password: " + password);
+    private void authenticateAndOpenDragAndDrop(String username, String password) {
+        if (authenticateUser(username, password)) {
+            openDragAndDropScene();
+        } else {
+            // Display authentication failure message or take appropriate action
+            System.out.println("Authentication failed. Incorrect username or password.");
+        }
+    }
+
+    private void openDragAndDropScene() {
+        Stage dragAndDropStage = new Stage();
+        dragAndDropStage.setTitle("Drag and Drop Files");
+
+        StackPane dragAndDropLayout = new StackPane();
+        Label dropLabel = new Label("Drag and drop files here");
+        dragAndDropLayout.getChildren().add(dropLabel);
+
+        setDragAndDrop(dragAndDropLayout, dropLabel);
+
+        Scene dragAndDropScene = new Scene(dragAndDropLayout, 400, 300);
+        dragAndDropStage.setScene(dragAndDropScene);
+
+        dragAndDropStage.show();
+    }
+
+    private void setDragAndDrop(StackPane root, Label dropLabel) {
+        root.setOnDragOver(event -> {
+            if (event.getGestureSource() != root && event.getDragboard().hasFiles()) {
+                event.acceptTransferModes(javafx.scene.input.TransferMode.COPY_OR_MOVE);
+            }
+            event.consume();
+        });
+
+        root.setOnDragDropped(event -> {
+            boolean success = false;
+            if (event.getGestureSource() != root && event.getDragboard().hasFiles()) {
+                success = true;
+                dropLabel.setText("Files dropped!");
+                event.getDragboard().getFiles().forEach(file ->
+                        System.out.println("Dropped file: " + file.getAbsolutePath()));
+            }
+            event.setDropCompleted(success);
+            event.consume();
+        });
+    }
+
+    private boolean authenticateUser(String enteredUsername, String enteredPassword) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(CREDENTIALS_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    String storedUsername = parts[0].trim();
+                    String storedPassword = parts[1].trim();
+                    if (enteredUsername.equals(storedUsername) && enteredPassword.equals(storedPassword)) {
+                        return true; // Authentication successful
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false; // Authentication failed
     }
 
     public static void main(String[] args) {
