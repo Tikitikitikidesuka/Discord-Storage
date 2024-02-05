@@ -1,4 +1,4 @@
-/* styles.css */
+/* stylesLogin.css */
 
 .root {
     -fx-background-color: #a2ecc5; /* Light Green */
@@ -13,6 +13,16 @@
 .text-field, .password-field {
     -fx-background-color: #27ae60; /* Darker Green */
     -fx-text-fill: #ffffff;
+}
+
+#loginButton {
+    -fx-background-color: #3498db; /* Blue */
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+#loginButton:hover {
+    -fx-background-color: #2980b9; /* Darker Blue */
 }
 
 #loginButton {
