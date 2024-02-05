@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import main.Main;
 
 import java.util.HashMap;
 
@@ -19,19 +20,25 @@ public class MainApp extends Application {
 
     protected static final String CREDENTIALS_FILE = "./src/main/resources/credentials.txt";
 
-    private HashMap<String, Stage> scene_manager = new HashMap<>();
+    private HashMap<String, Manager> scene_manager = new HashMap<>();
     private Login loginManager;
     private SignUp signUpManager;
+    private MainPage mainPageManager;
     private DragAndDrop dragAndDropManager;
 
     @Override
     public void start(Stage primaryStage) {
+        this.loginManager = new Login(primaryStage);
         this.signUpManager = new SignUp();
         this.dragAndDropManager = new DragAndDrop();
+        this.mainPageManager = new MainPage();
+
+        this.scene_manager.put("Login Page", loginManager);
+        this.scene_manager.put("Sign Up Page", signUpManager);
+        this.scene_manager.put("Main Page", mainPageManager);
+        this.scene_manager.put("Drag And Drop Page", dragAndDropManager);
 
         primaryStage.setTitle("Login Page");
-
-        this.scene_manager.put(primaryStage.getTitle(), primaryStage);
 
         //Create Grid
         GridPane root = new GridPane();
@@ -55,21 +62,13 @@ public class MainApp extends Application {
 
         Button loginButton = new Button("Login");
         loginButton.setId("loginButton");
-        loginButton.setOnAction(e -> this.authenticateAndOpenDragAndDrop(usernameField.getText(), passwordField.getText(), root, this.scene_manager));
+        loginButton.setOnAction(e -> this.authenticateAndOpenDragAndDrop(usernameField.getText(), passwordField.getText(), root));
         root.add(loginButton, 0, 3);
 
         Button signUpButton = new Button("Sign Up");
         signUpButton.setId("signUpButton");
         signUpButton.setOnAction(e -> signUpManager.openSignUpScene(this.scene_manager));
         root.add(signUpButton ,1, 6);
-
-        /*VBox vbox = new VBox(10);
-        vbox.setPadding(new Insets(20, 50, 50, 50));
-        vbox.getChildren().addAll(titleLabel, usernameField, passwordField, loginButton, signUpButton);
-        vbox.setAlignment(Pos.CENTER);
-
-        StackPane root = new StackPane();
-        root.getChildren().add(vbox);*/
 
         Scene scene = new Scene(root, 400, 275);
 
@@ -80,11 +79,9 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    private void authenticateAndOpenDragAndDrop(String username, String password,
-                                               GridPane grid, HashMap<String, Stage> scene_manager) {
-        this.loginManager = new Login();
+    private void authenticateAndOpenDragAndDrop(String username, String password, GridPane grid) {
         if (this.loginManager.authenticateUser(username, password)) {
-            this.dragAndDropManager.openDragAndDropScene(scene_manager);
+            this.mainPageManager.openMainPageScene(this.scene_manager);
         } else {
             // Display authentication failure message or take appropriate action
             System.out.println("Authentication failed. Incorrect username or password.");

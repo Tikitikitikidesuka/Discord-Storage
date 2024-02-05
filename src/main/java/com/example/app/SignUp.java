@@ -12,13 +12,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class SignUp {
+public class SignUp implements Manager {
+    private Stage signUpStage;
 
-    public void openSignUpScene(HashMap<String, Stage> scene_manager) {
-        Stage signUpStage = new Stage();
+    public void openSignUpScene(HashMap<String, Manager> scene_manager) {
+        signUpStage = new Stage();
         signUpStage.setTitle("Sign Up");
-
-        scene_manager.put(signUpStage.getTitle(), signUpStage);
 
         TextField newUsernameField = new TextField();
         newUsernameField.setPromptText("New Username");
@@ -34,8 +33,11 @@ public class SignUp {
 
         Scene signUpScene = new Scene(signUpLayout, 300, 200);
         signUpStage.setScene(signUpScene);
-        signUpStage.show();
-        scene_manager.get("Login Page").close();
+
+        Login login = (Login) scene_manager.get("Login Page");
+        login.closeScene();
+
+        this.showScene();
     }
 
     private void signUpUser(String newUsername, String newPassword) {
@@ -46,5 +48,17 @@ public class SignUp {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showScene() {
+        this.signUpStage.show();
+    }
+
+    public void closeScene() {
+
+    }
+
+    private void openMainPage() {
+
     }
 }

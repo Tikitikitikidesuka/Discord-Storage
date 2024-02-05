@@ -1,10 +1,18 @@
 package com.example.app;
 
+import javafx.stage.Stage;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Login {
+public class Login implements Manager {
+    private Stage loginStage;
+
+    public Login (Stage loginStage) {
+        this.loginStage = loginStage;
+    }
+
     public boolean authenticateUser(String enteredUsername, String enteredPassword) {
         try (BufferedReader reader = new BufferedReader(new FileReader(MainApp.CREDENTIALS_FILE))) {
             String line;
@@ -22,5 +30,15 @@ public class Login {
             e.printStackTrace();
         }
         return false; // Authentication failed
+    }
+
+    @Override
+    public void showScene() {
+        this.loginStage.show();
+    }
+
+    @Override
+    public void closeScene() {
+        this.loginStage.close();
     }
 }

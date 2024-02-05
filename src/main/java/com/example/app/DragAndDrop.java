@@ -2,18 +2,16 @@ package com.example.app;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
 
-public class DragAndDrop {
-    public void openDragAndDropScene(HashMap<String, Stage> scene_manager) {
-        Stage dragAndDropStage = new Stage();
-        dragAndDropStage.setTitle("Drag and Drop Files");
+public class DragAndDrop implements Manager {
+    private Stage dragAndDropStage;
+    public void openDragAndDropScene(HashMap<String, Manager> scene_manager) {
+        this.dragAndDropStage = new Stage();
+        this.dragAndDropStage.setTitle("Drag and Drop Files");
 
         StackPane dragAndDropLayout = new StackPane();
         Label dropLabel = new Label("Drag and drop files here");
@@ -22,10 +20,12 @@ public class DragAndDrop {
         setDragAndDrop(dragAndDropLayout, dropLabel);
 
         Scene dragAndDropScene = new Scene(dragAndDropLayout, 400, 300);
-        dragAndDropStage.setScene(dragAndDropScene);
+        this.dragAndDropStage.setScene(dragAndDropScene);
 
+        MainPage mainPage = (MainPage) scene_manager.get("Main Page");
+        mainPage.closeScene();
 
-        dragAndDropStage.show();
+        this.showScene();
     }
 
     private void setDragAndDrop(StackPane root, Label dropLabel) {
@@ -47,5 +47,15 @@ public class DragAndDrop {
             event.setDropCompleted(success);
             event.consume();
         });
+    }
+
+    @Override
+    public void showScene() {
+        this.dragAndDropStage.show();
+    }
+
+    @Override
+    public void closeScene() {
+        this.dragAndDropStage.close();
     }
 }
