@@ -68,7 +68,16 @@ public class Sender {
 			executor.shutdownNow();
 		}
 
-		return new DiscordFileMessage(filename, urls);
+		return new DiscordFileMessage(filename, urls, (ArrayList<Long>) msgIDs);
+	}
+
+	public void deleteMessage(long messageID) throws InterruptedException, ExecutionException {
+		for(WebhookClient client : clients) {
+			if(client.get(messageID).get() != null) {
+				client.delete(messageID);
+				return;
+			}
+		}
 	}
 
 	public void close() {

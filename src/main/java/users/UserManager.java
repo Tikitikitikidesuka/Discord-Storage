@@ -28,7 +28,7 @@ public class UserManager {
 		this.downloader = new Downloader();
 	}
 
-	private void writeUser(User user) {
+	public void addUser(User user) {
 		File file = JsonWriter.writeJson(user);
 		try {
 			List<byte[]> fileBytes = FileSlicer.sliceFile(file.getPath());
@@ -37,7 +37,17 @@ public class UserManager {
 		} catch (IOException | InterruptedException | ExecutionException e) {throw new RuntimeException(e);}
 	}
 
-	private User getUser(String userID) throws UserNotFoundException, ExecutionException, InterruptedException, IOException {
+	public void removeUser(String userID) throws UserNotFoundException, ExecutionException, InterruptedException {
+		if(!users.containsKey(userID))
+			throw new UserNotFoundException();
+
+		DiscordFileMessage discordFileMessage = users.get(userID);
+		for(Long id : discordFileMessage.getMessageIDs()) {
+			sender.deleteMessage(id);
+		}
+	}
+
+	public User getUser(String userID) throws UserNotFoundException, ExecutionException, InterruptedException, IOException {
 		if(!users.containsKey(userID))
 			throw new UserNotFoundException();
 
