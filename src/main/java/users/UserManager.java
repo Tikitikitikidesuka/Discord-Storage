@@ -47,6 +47,14 @@ public class UserManager {
 		}
 	}
 
+	public void updateUser(User user) throws UserNotFoundException, ExecutionException, InterruptedException {
+		if(!users.containsKey(user.getUserID()))
+			throw new UserNotFoundException();
+
+		removeUser(user.getUserID());
+		addUser(user);
+	}
+
 	public User getUser(String userID) throws UserNotFoundException, ExecutionException, InterruptedException, IOException {
 		if(!users.containsKey(userID))
 			throw new UserNotFoundException();
