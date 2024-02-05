@@ -12,6 +12,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class SignUp implements Manager {
     private Stage signUpStage;
 
@@ -26,7 +29,8 @@ public class SignUp implements Manager {
         newPasswordField.setPromptText("New Password");
 
         Button signUpSubmitButton = new Button("Sign Up");
-        signUpSubmitButton.setOnAction(e -> signUpUser(newUsernameField.getText(), newPasswordField.getText()));
+        signUpSubmitButton.setOnAction(e -> signUpUser(newUsernameField.getText(),
+                newPasswordField.getText(), scene_manager));
 
         StackPane signUpLayout = new StackPane();
         signUpLayout.getChildren().addAll(newUsernameField, newPasswordField, signUpSubmitButton);
@@ -40,12 +44,16 @@ public class SignUp implements Manager {
         this.showScene();
     }
 
-    private void signUpUser(String newUsername, String newPassword) {
+    private void signUpUser(String newUsername, String newPassword, HashMap<String, Manager> scene_manager) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(MainApp.CREDENTIALS_FILE, true))) {
+            String[] hash = Utils.passwordHash(newUsername, newPassword);
             writer.newLine();
-            writer.write(newUsername + ":" + newPassword);
-            System.out.println("User signed up: " + newUsername);
-        } catch (IOException e) {
+            writer.write(hash[0] + ":" + hash[1]);
+
+            MainPage mainPage = (MainPage) scene_manager.get("Main Page");
+            mainPage.openMainPageScene(scene_manager);
+            this.closeScene();
+        } catch (IOException | NoSuchAlgorithmException e ) {
             e.printStackTrace();
         }
     }
@@ -55,10 +63,11 @@ public class SignUp implements Manager {
     }
 
     public void closeScene() {
-
+        this.signUpStage.close();
     }
 
-    private void openMainPage() {
 
-    }
+
+
+
 }
