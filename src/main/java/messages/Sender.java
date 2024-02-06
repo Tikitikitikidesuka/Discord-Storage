@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class Sender {
 
-	private ArrayList<WebhookClient> clients;
+	private final ArrayList<WebhookClient> clients;
 
 	public Sender(Collection<String> webhookUrls) {
 		this.clients = new ArrayList<>();

@@ -64,4 +64,8 @@ public class UserManager {
 		File file = FileStitcher.stitchFile(bytes, discordFileMessage.getFilename());
 		return JsonReader.readJson(file.getPath());
 	}
+
+	public void close() {
+		sender.close();
+	}
 }
