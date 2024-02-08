@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
-    public static String[] passwordHash(String username, String password) throws NoSuchAlgorithmException {
+    public static String[] credentialsHash(String username, String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashedBytesUsername = md.digest(username.getBytes());
         byte[] hashedBytesPassword = md.digest(password.getBytes());

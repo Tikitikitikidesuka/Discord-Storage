@@ -23,7 +23,7 @@ public class Login implements Manager {
                     String storedUsername = parts[0].trim();
                     String storedPassword = parts[1].trim();
 
-                    String[] hashCredentials = Utils.passwordHash(enteredUsername, enteredPassword);
+                    String[] hashCredentials = Utils.credentialsHash(enteredUsername, enteredPassword);
 
                     if (hashCredentials[0].equals(storedUsername) && hashCredentials[1].equals(storedPassword)) {
                         return true; // Authentication successful

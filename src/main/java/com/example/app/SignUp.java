@@ -46,7 +46,7 @@ public class SignUp implements Manager {
 
     private void signUpUser(String newUsername, String newPassword, HashMap<String, Manager> scene_manager) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(MainApp.CREDENTIALS_FILE, true))) {
-            String[] hash = Utils.passwordHash(newUsername, newPassword);
+            String[] hash = Utils.credentialsHash(newUsername, newPassword);
             writer.newLine();
             writer.write(hash[0] + ":" + hash[1]);
 
